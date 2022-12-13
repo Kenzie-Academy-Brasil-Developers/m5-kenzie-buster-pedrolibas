@@ -11,3 +11,4 @@ class RegisterView(APIView):
         serializer.save()
 
         return Response(serializer.data, status.HTTP_201_CREATED)
+
