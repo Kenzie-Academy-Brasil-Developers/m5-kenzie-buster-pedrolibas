@@ -15,8 +15,6 @@ class UserSerializer(serializers.Serializer):
 
 
     def create(self, validated_data: dict):
-        
-
         if validated_data["is_employee"]:
             user = User.objects.create_superuser(**validated_data)
         else:

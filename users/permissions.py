@@ -15,3 +15,10 @@ class IsAdminOrReadOnly(permissions.BasePermission):
 
         return False
         
+
+class IsLogged(permissions.BasePermission):
+    def has_permission(self, request: Request, view: View):
+        if request.user.id:
+            return True
+
+        return False
