@@ -20,7 +20,7 @@ class MovieSerializer(serializers.Serializer):
 
 class MovieOrderSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
-    price = serializers.DecimalField(max_digits = 8, decimal_places = 2)
+    price = serializers.DecimalField(max_digits=8, decimal_places=2)
     title = serializers.SerializerMethodField(read_only=True)
     buyed_by = serializers.SerializerMethodField(read_only=True)
     buyed_at = serializers.DateTimeField(read_only=True)
@@ -32,5 +32,4 @@ class MovieOrderSerializer(serializers.Serializer):
         return obj.user.email
 
     def create(self, validated_data: dict):
-        validated_data["price"] = float(validated_data["price"])
         return MovieOrder.objects.create(**validated_data)
